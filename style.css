@@ -1,0 +1,553 @@
+:root {
+    /* Dark Mode Defaults */
+    --bg-color: #0d0d0d;
+    --text-color: #f5f5f5;
+    --secondary-text: #dcdcdc;
+    --card-bg: #1f1f1f;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --input-bg: #0d0d0d;
+    --input-text: #fff;
+    --gradient-bg: linear-gradient(135deg, #8e2de2, #ff0080, #00c6ff);
+}
+
+body.light-mode {
+    /* Light Mode Overrides */
+    --bg-color: #fffbea;
+    /* white with slight yellow tint */
+    --text-color: #0d0d0d;
+    --secondary-text: #333;
+    --card-bg: #ffffff;
+    --glass-bg: rgba(0, 0, 0, 0.05);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --input-bg: #fff;
+    --input-text: #000;
+    --gradient-bg: linear-gradient(135deg, #b6ff42, #ffc13d, #50f6ff);
+}
+
+/* Toggle button */
+.theme-switch {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: var(--card-bg);
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1.2em;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    z-index: 5;
+}
+
+/* Global */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+h1,
+h2,
+h4 {
+    margin: 0 0 10px;
+    font-weight: 700;
+}
+
+p {
+    line-height: 1.6;
+    color: var(--secondary-text);
+    transition: color 0.4s ease;
+}
+
+/* Header */
+.site-header {
+    background: var(--gradient-bg);
+    background-size: 400% 400%;
+    color: #fff;
+    text-align: center;
+    padding: 40px 20px;
+    animation: gradientMove 10s ease infinite;
+}
+
+.tagline {
+    font-weight: 400;
+}
+
+/* Navigation */
+.navigasi {
+    display: flex;
+    justify-content: center;
+    background: var(--card-bg);
+    transition: background 0.4s ease;
+}
+
+.navigasi a {
+    color: var(--text-color);
+    padding: 14px 20px;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.3s, color 0.4s ease, box-shadow 0.3s ease;
+}
+
+.navigasi a:hover {
+    background: rgba(255, 0, 128, 0.3);
+    transform: translateY(-2px);
+    border-radius: 4px;
+}
+
+/* Hero */
+/* Profile Picture Styling */
+.profile-picture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-picture img {
+    border-radius: 100%;
+    max-width: 300px;
+    /* Max size on PC */
+    width: 100%;
+    height: auto;
+    border: 5px solid #000;
+    /* Black border */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(255, 0, 128, 0.4);
+    /* Default dark mode glow */
+    transition: transform 0.3s ease, box-shadow 0.4s ease;
+}
+
+/* Hover Interaction */
+.profile-picture img:hover {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.8),
+        0 0 50px rgba(255, 0, 128, 0.6);
+}
+
+.hero {
+    align-items: center;
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--card-bg);
+    border-radius: 8px;
+    margin: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: background 0.4s ease;
+}
+
+/* Tentang */
+.tentang {
+    padding: 20px;
+    background: var(--card-bg);
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: background 0.4s ease;
+}
+
+/* Skill Section Header */
+.skill-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-left: 5px solid;
+    border-radius: 4px;
+    transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease, transform 0.3s ease;
+}
+
+.skill-header:hover {
+    transform: translateX(5px);
+}
+
+.skill-header span.icon {
+    display: inline-block;
+    transition: transform 0.4s ease;
+}
+
+/* Bounce + Rotate Animation on Hover */
+.skill-header:hover span.icon {
+    animation: bounceRotate 0.6s ease;
+}
+
+@keyframes bounceRotate {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+
+    25% {
+        transform: translateY(-5px) rotate(10deg) scale(1.1);
+    }
+
+    50% {
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+
+    75% {
+        transform: translateY(-3px) rotate(-10deg) scale(1.05);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+}
+
+body:not(.light-mode) .skill-header {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-color);
+    border-color: #ff0080;
+}
+
+body.light-mode .profile-picture img {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(255, 221, 0, 0.5);
+}
+
+body.light-mode .profile-picture img:hover {
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6),
+        0 0 50px rgba(255, 221, 0, 0.6);
+}
+
+body.light-mode .skill-header {
+    background: rgba(255, 221, 0, 0.15);
+    color: var(--text-color);
+    border-color: #ff9800;
+}
+
+
+/* Table Skills */
+.tabel-skill {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabel-skill th,
+.tabel-skill td {
+    border: 1px solid #333;
+    padding: 10px;
+    text-align: center;
+    color: var(--text-color);
+    transition: color 0.4s ease;
+}
+
+/* Dark mode table cell hover glow */
+.tabel-skill th:hover,
+.tabel-skill td:hover {
+    background: rgba(166, 0, 255, 0.15);
+    box-shadow: inset 0 0 8px rgba(157, 0, 255, 0.4);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Light mode table cell hover glow */
+body.light-mode .tabel-skill th:hover,
+body.light-mode .tabel-skill td:hover {
+    background: rgba(255, 221, 0, 0.15);
+    box-shadow: inset 0 0 8px rgba(255, 221, 0, 0.4);
+}
+
+/* Projects Container */
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Project Card */
+.project-card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.4s ease,
+        filter 0.3s ease;
+    will-change: transform, box-shadow, background;
+}
+
+.project-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(255, 0, 128, 0.6);
+}
+
+.project-card:hover img {
+    transform: scale(1);
+    filter: brightness(1.05);
+}
+
+/* Light mode project card hover */
+body.light-mode .project-card:hover {
+    box-shadow: 0 8px 20px rgba(255, 221, 0, 0.6);
+}
+
+/* Contact Form */
+.form-kontak {
+    padding: 20px;
+    background: var(--card-bg);
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: background 0.4s ease;
+}
+
+.form-kontak form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-kontak input,
+.form-kontak textarea {
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    font-size: 14px;
+    background: var(--input-bg);
+    color: var(--input-text);
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+.form-kontak button {
+    background: var(--gradient-bg);
+    background-size: 400% 400%;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s ease;
+    animation: gradientMove 10s ease infinite;
+}
+
+.form-kontak button:hover {
+    transform: translateY(-2px);
+}
+
+body.light-mode .form-kontak button:hover {
+    box-shadow: 0 4px 12px rgba(255, 221, 0, 0.6);
+}
+
+/* Footer */
+.site-footer {
+    background: var(--gradient-bg);
+    background-size: 400% 400%;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    animation: gradientMove 10s ease infinite;
+}
+
+/* Fade-in Animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in.delay-1 {
+    transition-delay: 0.2s;
+}
+
+.fade-in.delay-2 {
+    transition-delay: 0.4s;
+}
+
+.fade-in.delay-3 {
+    transition-delay: 0.6s;
+}
+
+.fade-in.delay-4 {
+    transition-delay: 0.8s;
+}
+
+/* Gradient Move */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navigasi {
+        flex-direction: column;
+    }
+
+    .profile-picture img {
+        max-width: 200px;
+        /* Smaller on tablets & phones */
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-picture img {
+        max-width: 150px;
+        /* Smaller on very small screens */
+    }
+}
+
+/* Glass Effect */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== Responsive Hamburger Menu ===== */
+
+/* Ensure navbar stays on top of everything */
+.navigasi {
+    position: relative;
+    z-index: 1000;
+}
+
+/* Hamburger container */
+.nav-toggle-label {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* Hamburger bars */
+.nav-toggle-label span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: var(--text-color);
+    border-radius: 2px;
+    transition: all 0.4s ease;
+}
+
+/* Navigation links container */
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 8px 12px;
+    transition: background 0.3s, transform 0.3s, color 0.4s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for nav links */
+.nav-links a:hover {
+    background: rgba(255, 0, 128, 0.3);
+    transform: translateY(-2px);
+    border-radius: 4px;
+}
+
+/* Light mode hover */
+body.light-mode .nav-links a:hover {
+    background: rgba(255, 221, 0, 0.2);
+    box-shadow: 0 2px 8px rgba(255, 221, 0, 0.4);
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .nav-toggle-label {
+        display: flex;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--card-bg);
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.4s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        /* stays above main */
+    }
+
+    /* Show menu when checkbox is checked */
+    .nav-toggle:checked~.nav-links {
+        max-height: 300px;
+    }
+
+    /* Fade + slide animation for menu items */
+    .nav-links a {
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav-toggle:checked~.nav-links a {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Staggered animation */
+    .nav-toggle:checked~.nav-links a:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+
+    .nav-toggle:checked~.nav-links a:nth-child(2) {
+        transition-delay: 0.2s;
+    }
+
+    .nav-toggle:checked~.nav-links a:nth-child(3) {
+        transition-delay: 0.3s;
+    }
+
+    .nav-toggle:checked~.nav-links a:nth-child(4) {
+        transition-delay: 0.4s;
+    }
+
+    /* Animate hamburger to X */
+    .nav-toggle:checked+.nav-toggle-label span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .nav-toggle:checked+.nav-toggle-label span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle:checked+.nav-toggle-label span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+}

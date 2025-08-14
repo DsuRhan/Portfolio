@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Landing Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Theme Toggle -->
+    <input type="checkbox" id="theme-toggle" hidden>
+    <label for="theme-toggle" class="theme-switch">🌙 / ☀️</label>
+
+    <header class="site-header fade-in delay-1">
+        <h1 class="judul">Rayhan's Portfolio</h1>
+        <p class="tagline">Web Developer | Front-End Enthusiast <br>&<br> Digital Artist | Color Theory Hobbyist</p>
+    </header>
+
+    <nav class="navigasi fade-in delay-2">
+        <!-- Hidden checkbox for toggle -->
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
+
+        <!-- Hamburger icon -->
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <!-- Navigation links -->
+        <div class="nav-links">
+            <a href="#beranda">Home</a>
+            <a href="#tentang">About</a>
+            <a href="#proyek">Projects</a>
+            <a href="#kontak">Contact</a>
+        </div>
+    </nav>
+
+
+    <main>
+        <!-- Hero Section -->
+        <section id="beranda" class="hero fade-in delay-3">
+            <div class="profile-picture">
+                <img src="/Day1/images/profile.png" alt="Profile Picture">
+            </div>
+            <h2>Welcome to My Portfolio</h2>
+            <p>I build modern, responsive, and interactive websites.</p>
+        </section>
+
+        <!-- About -->
+        <section id="tentang" class="tentang glass fade-in delay-4">
+            <h2>About Me</h2>
+            <h3>My name is Rayhan, but you can just call me Rhan</h3>
+            <p>I am a Web Developer focusing on HTML, CSS, and JavaScript with experience in building responsive and
+                user-friendly websites.</p>
+            <p>I also work as a digital artist as a hobby.</p>
+
+            <!-- Programming Skills -->
+            <h3 class="skill-header"><span class="icon">💻</span> Programming Skills</h3>
+            <table class="tabel-skill">
+                <tr>
+                    <th>Skill</th>
+                    <th>Level</th>
+                </tr>
+                <tr>
+                    <td>HTML</td>
+                    <td>Advanced</td>
+                </tr>
+                <tr>
+                    <td>CSS</td>
+                    <td>Advanced</td>
+                </tr>
+                <tr>
+                    <td>JavaScript</td>
+                    <td>Intermediate</td>
+                </tr>
+            </table>
+
+            <!-- Digital Art Skills -->
+            <h3 class="skill-header"><span class="icon">🎨</span> Digital Art Skills</h3>
+            <table class="tabel-skill">
+                <tr>
+                    <th>Skill</th>
+                    <th>Level</th>
+                </tr>
+                <tr>
+                    <td>Understanding Value & Saturation</td>
+                    <td>Intermediate</td>
+                </tr>
+                <tr>
+                    <td>Color Theory</td>
+                    <td>Intermediate</td>
+                </tr>
+                <tr>
+                    <td>Anatomy</td>
+                    <td>Advanced</td>
+                </tr>
+                <tr>
+                    <td>Landscape</td>
+                    <td>Intermediate</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Projects -->
+        <section id="proyek" class="projects-container fade-in delay-1">
+            <div class="project-card glass">
+                <img src="/Day1/images/prjct6.png" alt="Project 1">
+                <h4>Online Store Website</h4>
+                <p>A responsive e-commerce website with shopping cart features.</p>
+            </div>
+            <div class="project-card glass">
+                <img src="/Day1/images/prjct5.png" alt="Project 2">
+                <h4>Personal Blog</h4>
+                <p>A personal blog with a simple content management system.</p>
+            </div>
+            <div class="project-card glass">
+                <img src="/Day1/images/prjct4.png" alt="Project 3">
+                <h4>Product Landing Page</h4>
+                <p>A landing page for product promotion with a modern design.</p>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="kontak" class="form-kontak glass fade-in delay-2">
+            <h2>Contact Me</h2>
+            <form>
+                <input type="text" name="nama" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="pesan" placeholder="Your Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer fade-in delay-3">
+        <p>© 2025 Rayhan</p>
+    </footer>
+
+    <!-- Theme Toggle Script -->
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        toggle.addEventListener('change', () => {
+            document.body.classList.toggle('light-mode', toggle.checked);
+        });
+    </script>
+
+    <!-- Fade-in & Scroll Reveal Animation Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const reveals = document.querySelectorAll(".fade-in");
+
+            function revealOnScroll() {
+                const windowHeight = window.innerHeight;
+                const revealPoint = 100;
+
+                reveals.forEach(el => {
+                    const elementTop = el.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - revealPoint) {
+                        el.classList.add("active");
+                    }
+                });
+            }
+
+            window.addEventListener("scroll", revealOnScroll);
+            revealOnScroll();
+        });
+    </script>
+</body>
+
+</html>
