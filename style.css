@@ -1,3 +1,6 @@
+html {
+    scroll-behavior: smooth;
+}
 :root {
     /* Dark Mode Defaults */
     --bg-color: #0d0d0d;
@@ -552,3 +555,4 @@ body.light-mode .nav-links a:hover {
     }
 
 }
+
