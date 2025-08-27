@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="/images/profile.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
@@ -135,9 +136,34 @@
                 <button type="submit">Send</button>
             </form>
         </section>
+        <!-- Contact -->
+        <section id="kontak" class="form-kontak glass fade-in delay-2">
+            <h2>Contact Me</h2>
+            <form>
+                <input type="text" name="nama" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="pesan" placeholder="Your Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+        <section id="social" class="form-social glass fade-in delay-3">
+            <h2>You can check my social too</h2>
+            <a href="instagram.html" target="_blank">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="">
+                <i class="fa-brands fa-x-twitter"></i>
+            </a>
+        </section>
     </main>
 
-    <footer class="site-footer fade-in delay-3">
+    <footer class=" site-footer fade-in delay-3">
         <p>© 2025 Rayhan</p>
     </footer>
 
@@ -156,7 +182,7 @@
 
             function revealOnScroll() {
                 const windowHeight = window.innerHeight;
-                const revealPoint = 30;
+                const revealPoint = 10;
 
                 reveals.forEach(el => {
                     const elementTop = el.getBoundingClientRect().top;
@@ -170,7 +196,25 @@
             revealOnScroll();
         });
     </script>
-</body>
+    <script>
+        function updateTwitterIcon() {
+            const twitterIcon = document.querySelector(".fa-x-twitter, .fa-square-x-twitter");
+            if (!twitterIcon) return;
 
+            if (window.innerWidth <= 768) {
+                twitterIcon.classList.remove("fa-x-twitter");
+                twitterIcon.classList.add("fa-square-x-twitter");
+            } else {
+                twitterIcon.classList.remove("fa-square-x-twitter");
+                twitterIcon.classList.add("fa-x-twitter");
+            }
+        }
+
+        // Run on page load and window resize
+        window.addEventListener("load", updateTwitterIcon);
+        window.addEventListener("resize", updateTwitterIcon);
+    </script>
+
+</body>
 
 </html>
