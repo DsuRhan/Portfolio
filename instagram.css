@@ -1,0 +1,230 @@
+:root {
+    --bg-color: #0d0d0d;
+    --text-color: #f5f5f5;
+    --secondary-text: #dcdcdc;
+    --card-bg: #1f1f1f;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --gradient-bg: linear-gradient(135deg, #8e2de2, #ff0080, #00c6ff);
+}
+
+body.light-mode {
+    --bg-color: #fffbea;
+    --text-color: #0d0d0d;
+    --secondary-text: #333;
+    --card-bg: #ffffff;
+    --glass-bg: rgba(0, 0, 0, 0.05);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --gradient-bg: linear-gradient(135deg, #b6ff42, #ffc13d, #50f6ff);
+}
+
+/* Global */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+h1,
+h2,
+p {
+    margin: 0 0 10px;
+}
+
+p {
+    color: var(--secondary-text);
+}
+
+/* Theme Switch */
+.theme-switch {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: var(--card-bg);
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1.2em;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+/* Header */
+.site-header {
+    background: var(--gradient-bg);
+    background-size: 400% 400%;
+    text-align: center;
+    padding: 40px 20px;
+    color: #fff;
+    animation: gradientMove 10s ease infinite;
+}
+
+/* Insta Cards */
+.insta-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--card-bg);
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: background 0.4s ease, transform 0.3s ease;
+}
+
+.insta-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 0, 128, 0.6);
+}
+
+body.light-mode .insta-card:hover {
+    box-shadow: 0 8px 20px rgba(255, 221, 0, 0.6);
+}
+
+.insta-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.insta-info h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.insta-info p {
+    margin-bottom: 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 16px;
+    background: var(--gradient-bg);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: transform 0.3s ease;
+    animation: gradientMove 10s ease infinite;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* Footer */
+.site-footer {
+    background: var(--gradient-bg);
+    background-size: 400% 400%;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    animation: gradientMove 10s ease infinite;
+}
+
+/* Fade-in */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Gradient Move Animation */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .insta-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .insta-card img {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+
+/* Slide-in animation */
+.slide-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.slide-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.slide-left.active,
+.slide-right.active {
+    opacity: 1;
+    transform: translateX(0);
+
+    /* Ripple Effect */
+    .btn {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn::after {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        transform: scale(0);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.6s ease, opacity 0.6s ease;
+    }
+
+    .btn.ripple::after {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Ripple Span Element */
+.btn .ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: rippleAnim 0.6s linear;
+    background: rgba(255, 255, 255, 0.5);
+    width: 100px;
+    height: 100px;
+    pointer-events: none;
+    opacity: 0.7;
+    transform-origin: center;
+}
+
+@keyframes rippleAnim {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}

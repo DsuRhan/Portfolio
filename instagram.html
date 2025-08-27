@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Instagram Accounts</title>
+    <link rel="stylesheet" href="instagram.css">
+    <link rel="icon" type="image/png" href="images/profile.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+    <!-- Theme Toggle -->
+    <input type="checkbox" id="theme-toggle" hidden>
+    <label for="theme-toggle" class="theme-switch">🌙 / ☀️</label>
+
+    <header class="site-header fade-in delay-1">
+        <h1>My Instagram Pages</h1>
+        <p>Follow my journeys in art & code ✨</p>
+    </header>
+
+    <main>
+        <!-- Digital Art Account -->
+        <section class="insta-card slide-left delay-2">
+            <img src="instagram.fjog3-1.fna.fbcdn.net/v/t51.2885-19/517377449_18055200233599952_2138395948304840067_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fjog3-1.fna.fbcdn.net&_nc_cat=108&_nc_oc=Q6cZ2QF-l_8q1AmSW3OWbwDF4i2Q-gtgJASxvKmQ72Pqv1sqRrvuMnZu4qd-mTcTOuFf_h4&_nc_ohc=3OrB7DUd4-EQ7kNvwFOQKYF&_nc_gid=-E7wV8GZCKtGb9rba-99XA&edm=ALGbJPMBAAAA&ccb=7-5&oh=00_AfUJsgVEwVUzqFDFnEI_EuM18vbsCC9EmxfruSarDWEUEw&oe=68A7918B&_nc_sid=7d3ac5"
+                alt="Digital Art Instagram">
+            <div class="insta-info">
+                <h2><i class="fa-brands fa-instagram"></i> Digital Art</h2>
+                <p>This account is where I share my drawings, paintings, and creative experiments. Expect lots of colors
+                    and character art 🎨✨.</p>
+                <a href="https://www.instagram.com/_dsu.rhan/" target="_blank" class="btn">Visit Account</a>
+            </div>
+        </section>
+
+        <!-- Programming Account -->
+        <section class="insta-card slide-right delay-3">
+            <img src="images/profile.png" alt="Programming Instagram">
+            <div class="insta-info">
+                <h2><i class="fa-brands fa-instagram"></i> Programming</h2>
+                <p>This account is dedicated to web development tips, coding projects, and insights into my programming
+                    journey 💻🚀.</p>
+                <a href="https://www.instagram.com/ryhan.des/" target="_blank" class="btn">Visit Account</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer fade-in delay-4">
+        <p>© 2025 Rayhan</p>
+    </footer>
+
+    <!-- Theme Toggle Script -->
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        toggle.addEventListener('change', () => {
+            document.body.classList.toggle('light-mode', toggle.checked);
+        });
+    </script>
+
+    <!-- Fade-in & Scroll Reveal Animation Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const reveals = document.querySelectorAll(".fade-in, .slide-left, .slide-right");
+
+            function revealOnScroll() {
+                const windowHeight = window.innerHeight;
+                const revealPoint = 10;
+
+                reveals.forEach(el => {
+                    const elementTop = el.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - revealPoint) {
+                        el.classList.add("active");
+                    }
+                });
+            }
+
+            window.addEventListener("scroll", revealOnScroll);
+            revealOnScroll();
+        });
+    </script>
+    <script>
+        // Ripple button effect
+        document.querySelectorAll(".btn").forEach(btn => {
+            btn.addEventListener("click", function (e) {
+                const x = e.clientX - e.target.getBoundingClientRect().left;
+                const y = e.clientY - e.target.getBoundingClientRect().top;
+
+                const ripple = document.createElement("span");
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                ripple.classList.add("ripple-effect");
+
+                this.appendChild(ripple);
+
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+    </script>
+
+</body>
+
+</html>
